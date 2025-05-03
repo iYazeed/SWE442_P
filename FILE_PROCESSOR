@@ -1,0 +1,20 @@
+import java.io.*;
+
+public class UtilityTool {
+    public static void main(String[] args) {
+        System.out.println("Simple Java Utility Tool");
+        System.out.println("Processing file...");
+        processFile("input.txt");
+    }
+
+    public static void processFile(String fileName) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println("Processed: " + line.toUpperCase());
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+}
