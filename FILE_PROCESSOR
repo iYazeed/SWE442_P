@@ -1,9 +1,11 @@
 import java.io.*;
+import java.util.logging.*;
 
 public class UtilityTool {
+    private static final Logger LOGGER = Logger.getLogger(UtilityTool.class.getName());
+
     public static void main(String[] args) {
-        System.out.println("Simple Java Utility Tool");
-        System.out.println("Processing file...");
+        LOGGER.info("Java Utility Tool Started.");
         processFile("input.txt");
     }
 
@@ -11,10 +13,11 @@ public class UtilityTool {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
+                LOGGER.info("Processing line: " + line);
                 System.out.println("Processed: " + line.toUpperCase());
             }
         } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
+            LOGGER.severe("Error reading file: " + e.getMessage());
         }
     }
 }
